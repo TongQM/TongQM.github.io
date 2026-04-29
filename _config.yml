@@ -1,0 +1,154 @@
+# =============================================================================
+# Minimal Mistakes — site configuration for https://tongqm.github.io
+# Edit the values marked with TODO to make this site yours.
+# =============================================================================
+
+# Theme — using the remote theme so you don't have to fork the whole repo.
+remote_theme           : "mmistakes/minimal-mistakes@4.26.2"
+minimal_mistakes_skin  : "default"   # try "air", "contrast", "dark", "dirt", "mint", "neon", "plum", "sunrise"
+
+# Site Settings
+locale                 : "en-US"
+title                  : "Yidi Miao"                       # TODO: confirm display name
+title_separator        : "-"
+subtitle               : "PhD candidate, Carnegie Mellon University"   # TODO
+name                   : "Yidi Miao"                       # TODO
+description            : "Personal site of Yidi Miao — research, publications, and CV."
+url                    : "https://tongqm.github.io"        # leave as-is for the free GitHub URL
+baseurl                : ""                                # empty for username.github.io repos
+repository             : "TongQM/TongQM.github.io"
+teaser                 : # path to a default 600x400 teaser image, optional
+logo                   : # path to logo for masthead, optional
+masthead_title         : # set to override `title` in masthead
+
+# Site Author — shown in the sidebar
+author:
+  name             : "Yidi Miao"
+  avatar           : "/assets/images/avatar.jpg"   # drop a square photo here, or remove this line
+  bio              : "PhD candidate at Carnegie Mellon University. Interested in <em>your research area</em>."  # TODO
+  location         : "Pittsburgh, PA"
+  email            : "ydmiao@cmu.edu"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:ydmiao@cmu.edu"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/TongQM"
+    - label: "Google Scholar"
+      icon: "fas fa-fw fa-graduation-cap"
+      url: "https://scholar.google.com/citations?user=YOUR_ID"   # TODO
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/YOUR-HANDLE"             # TODO
+
+# Site Footer
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/TongQM"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:ydmiao@cmu.edu"
+
+# Reading Files
+include:
+  - _pages
+exclude:
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - vendor
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - assets/js/plugins
+  - assets/js/_main.js
+  - assets/js/vendor
+  - Capfile
+  - CHANGELOG
+  - config
+  - Gemfile
+  - Gruntfile.js
+  - gulpfile.js
+  - LICENSE
+  - log
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Rakefile
+  - README
+  - tmp
+  - /docs
+  - /test
+keep_files:
+  - .git
+  - .svn
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Conversion
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+# Markdown Processing
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Outputting
+permalink: /:categories/:title/
+paginate: 5
+paginate_path: /page:num/
+timezone: America/New_York
+
+# Plugins (whitelisted on GitHub Pages)
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
+whitelist:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
+# Defaults
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: true
+      related: true
+  # _pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true

@@ -1,0 +1,12 @@
+# Top navigation menu — appears in the masthead on every page.
+main:
+  - title: "About"
+    url: /about/
+  - title: "CV"
+    url: /cv/
+  - title: "Publications"
+    url: /publications/
+  - title: "Projects"
+    url: /projects/
+  - title: "Blog"
+    url: /blog/
