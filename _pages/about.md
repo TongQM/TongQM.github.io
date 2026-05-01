@@ -5,11 +5,13 @@ layout: single
 author_profile: true
 ---
 
-I am a PhD candidate in **Information Systems and Management** at **Carnegie Mellon University**'s Heinz College, advised by [Peter Zhang](https://www.andrew.cmu.edu/user/yunz2/). My research is in **operations research and decision-making under uncertainty**, with a particular interest in robust optimization for transportation systems.
+I am a PhD candidate in **Information Systems and Management** at **Carnegie Mellon University**'s Heinz College, advised by [Peter Zhang](https://www.andrew.cmu.edu/user/yunz2/). My research is in **operations research and decision-making under uncertainty**.
 
 ## Primary research
 
-**Robust optimization for last-mile transportation.** We design optimization frameworks that partition service regions and schedule vehicle dispatches when demand is only known up to an ambiguity set. By reformulating the resulting semi-infinite program as a polynomial-time-solvable semidefinite approximation — and pairing it with a logic-based Benders decomposition — the approach yields tractable, distributionally robust dispatch policies. The aim is reliable last-mile service in operationally complex settings, including disadvantaged neighborhoods.
+My work develops **tractable methods for decision-making under uncertainty**, with a central thread in distributionally robust optimization. A representative line of results turns ambiguous-demand problems — where the underlying distribution is known only to lie within an ambiguity set — into semidefinite approximations that solve in polynomial time, and pairs them with logic-based Benders decomposition for large-scale instances.
+
+These techniques apply broadly to operational problems in **transportation, supply chains, and resource allocation**. Current work applies them to autonomous-vehicle fleet sizing and service-region design under spatial demand uncertainty.
 
 ## Additional collaborations
 
