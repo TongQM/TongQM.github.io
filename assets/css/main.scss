@@ -6,15 +6,28 @@ search: false
 @charset "utf-8";
 
 /* ----------------------------------------------------------------------------
-   Font overrides — must come BEFORE the theme imports so the theme picks them
-   up when it builds its variables.
+   Font + color overrides — must come BEFORE the theme imports so the theme
+   picks them up when it builds its variables.
+   Inspired by https://www.philipjkeller.com — serif body with a quiet,
+   small-caps sans-serif masthead, and a sage-teal link color.
 ---------------------------------------------------------------------------- */
-$sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-             "Helvetica Neue", Arial, sans-serif !default;
-$serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman",
-        Times, serif !default;
-$global-font-family: $sans-serif;
-$header-font-family: $sans-serif;
+$serif:        "Cormorant Garamond", "EB Garamond", Georgia, "Times New Roman",
+               Times, serif !default;
+$sans-serif:   "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif !default;
+
+$global-font-family: $serif;
+$header-font-family: $serif;
+
+/* Sage-teal accent (links, blockquote rule) */
+$accent-color:       #5b9279;
+$accent-color-hover: #487762;
+$link-color:         $accent-color;
+$link-color-hover:   $accent-color-hover;
+$link-color-visited: $accent-color;
+
+/* Slightly softer body text than pure black */
+$text-color: #2c2c2c;
 
 /* ----------------------------------------------------------------------------
    Theme imports
@@ -23,27 +36,161 @@ $header-font-family: $sans-serif;
 @import "minimal-mistakes";
 
 /* ----------------------------------------------------------------------------
-   Refinements
+   Body — serif everywhere, with a relaxed reading rhythm.
 ---------------------------------------------------------------------------- */
+html { font-size: 17px; }
+
 body {
-  font-feature-settings: "cv11"; /* Inter's clearer "1" / "I" alternates */
+  font-family: $serif;
+  color: $text-color;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6,
-.page__title,
-.archive__item-title {
-  letter-spacing: -0.01em;
+.page__content {
+  font-family: $serif;
+  font-size: 1.15em;
+  line-height: 1.75;
 }
 
 .page__content p,
 .page__content li {
-  line-height: 1.7;
+  font-family: $serif;
+  line-height: 1.75;
 }
 
-/* Pull-quotes and emphasis blocks read nicer in serif */
+/* ----------------------------------------------------------------------------
+   Headings — serif, generous size, slight negative tracking on display sizes.
+---------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6,
+.page__title,
+.archive__item-title {
+  font-family: $serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+}
+
+.page__title {
+  font-size: 2.6em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+.page__content h2 {
+  font-size: 1.7em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.page__content h3 {
+  font-size: 1.35em;
+  margin-top: 1.5em;
+}
+
+/* ----------------------------------------------------------------------------
+   Masthead + navigation — quiet sans-serif, uppercase, wide letter-spacing.
+---------------------------------------------------------------------------- */
+.masthead {
+  border-bottom: none;
+}
+
+.greedy-nav,
+.greedy-nav .visible-links,
+.greedy-nav__toggle {
+  font-family: $sans-serif;
+}
+
+.greedy-nav .site-title,
+.greedy-nav a.site-title {
+  font-family: $sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.95em;
+}
+
+.greedy-nav a {
+  font-family: $sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78em;
+}
+
+/* ----------------------------------------------------------------------------
+   Sidebar author profile — sans-serif name, italic serif bio.
+---------------------------------------------------------------------------- */
+.author__name {
+  font-family: $sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.95em;
+}
+
+.author__bio {
+  font-family: $serif;
+  font-style: italic;
+  font-size: 1.05em;
+  line-height: 1.5;
+  color: #4a4a4a;
+}
+
+.sidebar .author__urls li,
+.sidebar .author__urls a {
+  font-family: $sans-serif;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+}
+
+/* ----------------------------------------------------------------------------
+   Italic blockquote for taglines and pull-quotes.
+---------------------------------------------------------------------------- */
 .page__content blockquote {
   font-family: $serif;
   font-style: italic;
+  font-size: 1.15em;
+  border-left: 3px solid $accent-color;
+  color: #3a3a3a;
 }
+
+/* ----------------------------------------------------------------------------
+   Hero tagline — paired italic-serif kicker over a bold serif headline.
+   Use the .tagline wrapper on the homepage.
+---------------------------------------------------------------------------- */
+.tagline {
+  margin: 0.5em 0 1.75em;
+}
+.tagline .kicker {
+  display: block;
+  font-family: $serif;
+  font-style: italic;
+  font-size: 1.25em;
+  color: #4a4a4a;
+  margin-bottom: 0.25em;
+}
+.tagline .headline {
+  display: block;
+  font-family: $serif;
+  font-weight: 600;
+  font-size: 2.2em;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: #1a1a1a;
+}
+
+/* ----------------------------------------------------------------------------
+   Links — sage teal, no underline by default; underline on hover.
+---------------------------------------------------------------------------- */
+a, .page__content a {
+  color: $accent-color;
+  text-decoration: none;
+}
+a:hover, .page__content a:hover {
+  color: $accent-color-hover;
+  text-decoration: underline;
+}
+
+/* Footer keeps the same accent. */
+.page__footer a { color: $accent-color; }
