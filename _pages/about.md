@@ -5,17 +5,15 @@ layout: single
 author_profile: true
 ---
 
-I am a PhD candidate in **Information Systems and Management** at **Carnegie Mellon University**'s Heinz College, advised by [Peter Zhang](https://www.andrew.cmu.edu/user/yunz2/). My work sits at the intersection of optimization and machine learning, with a recurring theme of **decision-making under uncertainty**.
+I am a PhD candidate in **Information Systems and Management** at **Carnegie Mellon University**'s Heinz College, advised by [Peter Zhang](https://www.andrew.cmu.edu/user/yunz2/). My research is in **operations research and decision-making under uncertainty**, with a particular interest in robust optimization for transportation systems.
 
-## Research
-
-Our research follows two complementary threads.
+## Primary research
 
 **Robust optimization for last-mile transportation.** We design optimization frameworks that partition service regions and schedule vehicle dispatches when demand is only known up to an ambiguity set. By reformulating the resulting semi-infinite program as a polynomial-time-solvable semidefinite approximation — and pairing it with a logic-based Benders decomposition — the approach yields tractable, distributionally robust dispatch policies. The aim is reliable last-mile service in operationally complex settings, including disadvantaged neighborhoods.
 
-**Reliability of large language models in multi-turn interactions.** We study how LLMs trade factual accuracy for conversational flow as dialogues unfold. We introduced a *position-weighted consistency (PWC)* metric and a confidence-aware response-generation procedure that improves answer stability across turns (ACL 2025). A companion survey synthesizes the multi-turn LLM landscape — tasks, benchmarks, and improvement methods — and identifies open challenges in context, reasoning, fairness, and safety.
+## Additional collaborations
 
-The common thread is operationalizing uncertainty: whether it lives in demand distributions or in model behavior, the goal is the same — reliable decisions at deployment.
+Alongside my primary work, I contribute to a research line in our department on the **reliability of large language models in multi-turn interactions**. The collaboration introduced a *position-weighted consistency (PWC)* metric and a confidence-aware response-generation procedure that improves answer stability across turns (ACL Findings 2025), together with a companion survey synthesizing the multi-turn LLM landscape — its tasks, benchmarks, and open challenges in context, reasoning, fairness, and safety.
 
 ## Background
 
