@@ -28,16 +28,15 @@ author:
   bio              : "PhD candidate at CMU Heinz. Optimization under uncertainty for transportation systems and large language models."
   location         : "Pittsburgh, PA"
   email            : "ydmiao@cmu.edu"
+  # Note: the theme auto-renders an Email link from `author.email` above,
+  # so we don't add one here (otherwise it would duplicate).
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:ydmiao@cmu.edu"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/TongQM"
     - label: "Google Scholar"
       icon: "fas fa-fw fa-graduation-cap"
-      url: "https://scholar.google.com/citations?user=YOUR_ID"   # TODO
+      url: "https://scholar.google.com/citations?user=iSQtG3QAAAAJ&hl=en"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/yidi-miao"
