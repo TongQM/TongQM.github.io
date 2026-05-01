@@ -11,7 +11,7 @@ permalink: /
   <span class="headline">under uncertainty.</span>
 </div>
 
-I am a PhD candidate in **Information Systems and Management** at **Carnegie Mellon University**'s Heinz College, advised by [Peter Zhang](https://www.andrew.cmu.edu/user/yunz2/). My research develops **tractable methods for decision-making under uncertainty** — particularly distributionally robust optimization — with applications across **transportation, supply chains, and resource allocation**. I additionally contribute to collaborative work on the reliability of **large language models** in multi-turn interactions.
+I am a PhD candidate in **Information Systems and Management** at **Carnegie Mellon University**'s Heinz College, where I am very fortunate to be advised by [Professor Peter Zhang](https://www.andrew.cmu.edu/user/yunz2/). My research develops **tractable methods for decision-making under uncertainty**, drawing primarily on **stochastic programming and robust optimization**, with applications across **transportation, supply chains, and resource allocation**. I additionally contribute to collaborative work on the reliability of **large language models** in multi-turn interactions.
 
 I hold an MS in Applied Mathematics and Operations Research from the **University of Michigan**, and a BE in Industrial Engineering from **Xi'an Jiaotong University**.
 
