@@ -1,6 +1,7 @@
 ---
 layout: home
-title: "Yidi Miao"
+title:
+seo_title: "Yidi Miao"
 author_profile: true
 permalink: /
 ---
