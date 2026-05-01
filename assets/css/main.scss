@@ -1,0 +1,49 @@
+---
+# Front matter is required for Jekyll to process this Sass file
+search: false
+---
+
+@charset "utf-8";
+
+/* ----------------------------------------------------------------------------
+   Font overrides — must come BEFORE the theme imports so the theme picks them
+   up when it builds its variables.
+---------------------------------------------------------------------------- */
+$sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+             "Helvetica Neue", Arial, sans-serif !default;
+$serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman",
+        Times, serif !default;
+$global-font-family: $sans-serif;
+$header-font-family: $sans-serif;
+
+/* ----------------------------------------------------------------------------
+   Theme imports
+---------------------------------------------------------------------------- */
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+/* ----------------------------------------------------------------------------
+   Refinements
+---------------------------------------------------------------------------- */
+body {
+  font-feature-settings: "cv11"; /* Inter's clearer "1" / "I" alternates */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.page__title,
+.archive__item-title {
+  letter-spacing: -0.01em;
+}
+
+.page__content p,
+.page__content li {
+  line-height: 1.7;
+}
+
+/* Pull-quotes and emphasis blocks read nicer in serif */
+.page__content blockquote {
+  font-family: $serif;
+  font-style: italic;
+}

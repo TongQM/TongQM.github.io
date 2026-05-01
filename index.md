@@ -5,16 +5,14 @@ author_profile: true
 permalink: /
 ---
 
-Welcome. I am a PhD candidate at Carnegie Mellon University working on
-*your research area in one short sentence*. My research focuses on
-*one or two key themes that you care about*.
+I am a PhD candidate in **Information Systems and Management** at **Carnegie Mellon University**'s Heinz College. My research applies optimization under uncertainty to two problem areas: **last-mile transportation systems**, where I design distributionally robust service regions and dispatch policies, and **large language models**, where I study consistency and reliability across multi-turn interactions.
 
-I am most easily reached by [email](mailto:ydmiao@cmu.edu). You can find
-my code on [GitHub](https://github.com/TongQM) and my papers under
-[Publications]({{ "/publications/" | relative_url }}).
+I hold an MS in Applied Mathematics and Operations Research from the **University of Michigan**, and a BE in Industrial Engineering from **Xi'an Jiaotong University**.
+
+The fastest way to reach me is by [email](mailto:ydmiao@cmu.edu). My code lives on [GitHub](https://github.com/TongQM); a full list of papers is on the [Publications]({{ "/publications/" | relative_url }}) page.
 
 ## News
 
-- **Apr 2026** — Started a new project on *X*.
-- **Jan 2026** — Paper *Title* accepted at *Venue*.
-- **Sep 2025** — Began my PhD at CMU.
+- **2025** — Paper *Firm or Fickle? Evaluating Large Language Models Consistency in Sequential Interactions* accepted at **ACL 2025**.
+- **2024** — *PennSTART Safety Standards Project* report published in the USDOT National Transportation Library.
+- **Aug 2023** — Started PhD at Carnegie Mellon University.

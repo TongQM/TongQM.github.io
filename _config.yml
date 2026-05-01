@@ -9,11 +9,11 @@ minimal_mistakes_skin  : "default"   # try "air", "contrast", "dark", "dirt", "m
 
 # Site Settings
 locale                 : "en-US"
-title                  : "Yidi Miao"                       # TODO: confirm display name
-title_separator        : "-"
-subtitle               : "PhD candidate, Carnegie Mellon University"   # TODO
-name                   : "Yidi Miao"                       # TODO
-description            : "Personal site of Yidi Miao — research, publications, and CV."
+title                  : "Yidi Miao"
+title_separator        : "·"
+subtitle               : "PhD candidate, Carnegie Mellon University"
+name                   : "Yidi Miao"
+description            : "Yidi Miao — PhD candidate at CMU Heinz. Robust optimization for last-mile transportation, and reliability of large language models."
 url                    : "https://tongqm.github.io"        # leave as-is for the free GitHub URL
 baseurl                : ""                                # empty for username.github.io repos
 repository             : "TongQM/TongQM.github.io"
@@ -24,8 +24,8 @@ masthead_title         : # set to override `title` in masthead
 # Site Author — shown in the sidebar
 author:
   name             : "Yidi Miao"
-  avatar           : "/assets/images/avatar.jpg"   # drop a square photo here, or remove this line
-  bio              : "PhD candidate at Carnegie Mellon University. Interested in <em>your research area</em>."  # TODO
+  # avatar         : "/assets/images/avatar.jpg"   # uncomment after you drop a square photo at this path
+  bio              : "PhD candidate at CMU Heinz. Optimization under uncertainty for transportation systems and large language models."
   location         : "Pittsburgh, PA"
   email            : "ydmiao@cmu.edu"
   links:
@@ -40,7 +40,7 @@ author:
       url: "https://scholar.google.com/citations?user=YOUR_ID"   # TODO
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/YOUR-HANDLE"             # TODO
+      url: "https://www.linkedin.com/in/yidi-miao"
 
 # Site Footer
 footer:
