@@ -8,8 +8,6 @@ toc_label: "Sections"
 toc_sticky: true
 ---
 
-A PDF copy is available [here]({{ "/assets/files/Yidi_Miao_CV.pdf" | relative_url }}).
-
 ## Education
 
 - **PhD**, Information Systems and Management, **Carnegie Mellon University**, Aug 2023 – present
