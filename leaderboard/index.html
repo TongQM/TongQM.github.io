@@ -98,7 +98,7 @@ h2{font-size:1.375rem;line-height:1.2;letter-spacing:-.018em;font-weight:600;mar
   padding:.1875rem 0;position:relative;cursor:default}
 .row .who{font-size:.8125rem;letter-spacing:-.006em;text-align:right;white-space:nowrap;
   overflow:hidden;text-overflow:ellipsis}
-.row.mine .who{font-weight:600}
+.row.repl .who{font-weight:600}
 .track{position:relative;height:1.125rem;display:flex;align-items:center}
 .bar{height:1rem;max-height:1.5rem;border-radius:0 .25rem .25rem 0;   /* 4px rounded data-end, square at baseline */
   transition:width .18s ease}
@@ -129,7 +129,7 @@ tbody tr:last-child td{border-bottom:none}
   padding:.125rem .4375rem;border-radius:.3125rem;white-space:nowrap}
 .tag.rep{background:var(--teal-fill);color:var(--s3)}
 .tag.rpt{background:var(--orange-fill);color:var(--s2)}
-.mine-row{background:var(--teal-fill)}
+.repl-row{background:var(--teal-fill)}
 .flag{font-size:.8125rem;line-height:1.4;color:var(--red);padding:.75rem 1.125rem;border-top:.0625rem solid var(--sep)}
 .kv{margin:0;padding:.875rem 1.125rem;display:grid;grid-template-columns:1fr auto;gap:.3125rem .75rem;font-size:.875rem}
 .kv dt{color:var(--label-2)}
@@ -192,7 +192,7 @@ code{font-family:var(--mono);font-size:.9em}
     <div class="chart">
       <div class="legend">
         <span><i style="background:var(--s2)"></i>Reported</span>
-        <span><i style="background:var(--s3)"></i>Replicated independently</span>
+        <span><i style="background:var(--s3)"></i>Re-run by us</span>
       </div>
       <div class="grid" id="grid"></div>
       <div class="rows" id="rows"></div>
@@ -223,7 +223,7 @@ code{font-family:var(--mono);font-size:.9em}
   problems with the same model. The retry loop supplies the entire published gain; the experience
   library gives it back.</p>
   <div class="card">
-    <div class="card-head"><h3>Component ablation</h3><span class="meta">IndustryOR &middot; n = 25 &middot; gpt-4o</span></div>
+    <div class="card-head"><h3>Component ablation &mdash; AlphaOPT</h3><span class="meta">IndustryOR &middot; n = 25 &middot; gpt-4o</span></div>
     <div class="chart"><div class="rows" id="ablRows"></div>
       <div class="axis"><div></div><div class="ticks" id="ablTicks"></div></div></div>
     <p class="flag">Full stack versus bare baseline across all 82 instances: +0.0 points, 10 discordant
@@ -255,6 +255,7 @@ code{font-family:var(--mono);font-size:.9em}
   <p><b>Prototype.</b> Seeded from published tables and one independent replication. A contributed row
   needs the split and its size, the exact model, the protocol, and ideally per-instance outcomes so
   results can be compared pairwise rather than as bare proportions.</p>
+  <p><b>Attribution.</b> Every system named here is its authors’ published work. Rows tagged <i>replicated</i> are our re-runs of that work under a stated protocol, not new systems; the ablation strips components from AlphaOPT as published.</p>
   <p>Replicated rows use <code>n_runs=1</code>; intervals are wide and no single margin here is
   statistically significant. Scope is natural language to LP/MILP; constraint-programming benchmarks
   such as Text2Zinc are tracked separately.</p>
@@ -274,9 +275,9 @@ const SETS=[
   {s:"Reflexion",p:"verbal self-reflection",m:"gpt-4o",a:56.0,c:"multi",src:"reported"},
   {s:"ORThought",p:"structured reasoning",m:"gpt-4o",a:60.0,c:"multi",src:"reported"},
   {s:"AlphaOPT",p:"learned experience library",m:"gpt-4o",a:60.0,c:"multi",src:"reported"},
-  {s:"AlphaOPT (ours)",p:"shipped library, 5 retries",m:"gpt-4o-2024-08-06",a:44.0,c:"multi",src:"replicated",mine:1},
-  {s:"— library removed",p:"5 self-debug retries",m:"gpt-4o-2024-08-06",a:60.0,c:"multi",src:"replicated",mine:1},
-  {s:"— retries removed too",p:"single pass, no library",m:"gpt-4o-2024-08-06",a:48.0,c:"1",src:"replicated",mine:1}]},
+  {s:"AlphaOPT, as shipped",p:"shipped library, 5 retries",m:"gpt-4o-2024-08-06",a:44.0,c:"multi",src:"replicated",repl:1},
+  {s:"AlphaOPT, no library",p:"library removed, 5 retries",m:"gpt-4o-2024-08-06",a:60.0,c:"multi",src:"replicated",repl:1},
+  {s:"AlphaOPT, no lib/retries",p:"single pass, library removed",m:"gpt-4o-2024-08-06",a:48.0,c:"1",src:"replicated",repl:1}]},
  {id:"b",name:"IndustryOR · IR2Solve split",meta:"n = 42 · differently cleaned answer key",rows:[
   {s:"OptiMUS",p:"multi-agent",m:"gpt-4o",a:54.3,c:"multi",src:"reported"},
   {s:"SAC-Opt",p:"agentic, 39 calls",m:"gpt-4o",a:63.8,c:"39",src:"reported"},
@@ -290,8 +291,8 @@ const SETS=[
   {s:"Standard prompt",p:"direct generation",m:"gpt-4o",a:46.7,c:"1",src:"reported"},
   {s:"ExpeL",p:"exemplar retrieval",m:"gpt-4o",a:47.8,c:"multi",src:"reported"},
   {s:"AlphaOPT",p:"learned experience library",m:"gpt-4o",a:56.0,c:"multi",src:"reported"},
-  {s:"AlphaOPT (ours)",p:"shipped library, 5 retries",m:"gpt-4o-2024-08-06",a:35.9,c:"multi",src:"replicated",mine:1},
-  {s:"— library removed",p:"5 self-debug retries",m:"gpt-4o-2024-08-06",a:37.0,c:"multi",src:"replicated",mine:1}]},
+  {s:"AlphaOPT, as shipped",p:"shipped library, 5 retries",m:"gpt-4o-2024-08-06",a:35.9,c:"multi",src:"replicated",repl:1},
+  {s:"AlphaOPT, no library",p:"library removed, 5 retries",m:"gpt-4o-2024-08-06",a:37.0,c:"multi",src:"replicated",repl:1}]},
  {id:"d",name:"OptiBench",meta:"n = 403 · largest and easiest of the four",rows:[
   {s:"LLMOPT",p:"fine-tuned",m:"qwen2.5-14b",a:66.4,c:"—",src:"reported"},
   {s:"Standard prompt",p:"direct generation",m:"gpt-4o",a:72.7,c:"1",src:"reported"},
@@ -317,7 +318,7 @@ function bars(host,ticksHost,data,max,fmt,colorFn,tipFn){
   host.innerHTML="";ticksHost.innerHTML="";
   data.forEach(d=>{
     const row=document.createElement("div");
-    row.className="row"+(d.mine?" mine":"");
+    row.className="row"+(d.repl?" repl":"");
     row.innerHTML=`<div class="who">${d.s}</div><div class="track">
       <div class="bar" style="width:${(d.v/max*100).toFixed(1)}%;background:${colorFn(d)}"></div>
       <span class="val">${fmt(d.v)}</span></div>`;
@@ -341,7 +342,7 @@ function render(){
   bars($("rows"),$("ticks"),data,100,v=>v.toFixed(0)+"%",hue,
     d=>`<b>${d.s}</b><span>${d.p}<br>${d.m} · ${d.a.toFixed(1)}% · ${d.c} call${d.c==="1"?"":"s"}<br>${d.src}</span>`);
   renderGrid();
-  $("tbody").innerHTML=rows.map(r=>`<tr class="${r.mine?"mine-row":""}">
+  $("tbody").innerHTML=rows.map(r=>`<tr class="${r.repl?"repl-row":""}">
     <td class="name">${r.s}</td><td class="dim">${r.p}</td><td class="dim">${r.m}</td>
     <td class="num">${r.a.toFixed(1)}%</td><td class="num">${r.c}</td>
     <td><span class="tag ${r.src==="replicated"?"rep":"rpt"}">${r.src}</span></td></tr>`).join("")
