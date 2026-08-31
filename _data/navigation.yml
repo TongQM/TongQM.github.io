@@ -6,3 +6,5 @@ main:
     url: /cv/
   - title: "Publications"
     url: /publications/
+  - title: "OR Board"
+    url: /leaderboard/
