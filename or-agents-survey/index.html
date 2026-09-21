@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Problem Descriptions to Decisions | Survey</title>
+<meta name="description" content="A scoping review of 206 studies on LLM agents for optimization modeling: specification sufficiency, formulation fidelity, and solving correctness.">
+<link rel="canonical" href="https://tongqm.github.io/or-agents-survey/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23173042'/%3E%3Cpath d='M7 22 L14 12 L19 18 L25 9' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='25' cy='9' r='2.6' fill='%23c2571a'/%3E%3C/svg%3E">
+<style>
+:root{--ink:#173042;--body:#36485a;--muted:#667685;--line:#dbe2e8;--surface:#f4f6f8;--accent:#c2571a;--green:#2f7d4f;--blue:#2a63a8;--orange:#b86a12;--width:1140px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:#fff;color:var(--body);font-family:Inter,"Segoe UI",-apple-system,BlinkMacSystemFont,Arial,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:4px}
+h1,h2,h3,p,figure{margin:0}
+h1,h2,h3{color:var(--ink)}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.03em}
+h1{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.07}
+h2{font-size:clamp(1.9rem,3.3vw,2.8rem);line-height:1.15}
+h3{font-size:1.1rem;font-weight:650;line-height:1.4}
+p+p{margin-top:1rem}
+.wrap{width:min(var(--width),calc(100% - 64px));margin-inline:auto}
+.skip{position:fixed;top:-80px;left:12px;padding:10px 18px;background:var(--ink);color:#fff;z-index:100}
+.skip:focus{top:8px}
+header.site{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
+.bar{display:flex;justify-content:space-between;align-items:center;min-height:70px;gap:20px}
+.brand{font-weight:650;color:var(--ink);text-decoration:none;letter-spacing:-.03em;font-size:18px;white-space:nowrap}
+.brand b{color:var(--accent);font-weight:650}
+nav{display:flex;gap:26px;font-size:14px;font-weight:500;align-items:center;overflow-x:auto}
+nav a{text-decoration:none;white-space:nowrap}
+nav a:hover{color:var(--accent)}
+nav .paper{padding-left:22px;border-left:1px solid var(--line);color:var(--ink)}
+.eyebrow,.num{font-size:12px;font-weight:650;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.rule{display:inline-block;width:28px;height:2px;background:var(--accent)}
+.hero{padding:64px 0 48px}
+.sub{font-family:Georgia,serif;font-size:clamp(1.2rem,2vw,1.6rem);color:var(--ink);margin-top:14px}
+.lede{max-width:760px;margin-top:26px;font-size:1.12rem}
+.authors{margin-top:22px;color:var(--ink);font-weight:500}
+.authors span{color:var(--muted);font-weight:400}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;align-items:center}
+.btn{display:inline-block;padding:12px 22px;border-radius:6px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--ink)}
+.btn.primary{background:var(--ink);color:#fff}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary:hover{background:var(--accent);color:#fff}
+.date{color:var(--muted);font-size:14px;margin-left:6px}
+.status{margin-top:26px;padding:14px 18px;border-left:3px solid var(--accent);background:var(--surface);font-size:15px;max-width:860px}
+.flow{margin-top:44px;overflow-x:auto}
+.flow svg{display:block;min-width:760px;width:100%;height:auto}
+.flow figcaption,.cap{font-size:13.5px;color:var(--muted);margin-top:10px}
+section.sec{padding:76px 0;border-top:1px solid var(--line)}
+section.tint{background:var(--surface)}
+.num{margin-bottom:14px}
+.intro{max-width:780px;margin-top:20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border:1px solid var(--line);border-radius:6px;background:#fff}
+.stats div{padding:22px 24px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font-family:Georgia,serif;font-weight:400;font-size:2.3rem;color:var(--ink);line-height:1.1}
+.stats span{font-size:14px;color:var(--muted)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:40px}
+.card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:26px}
+.card .k{font-size:12px;font-weight:700;letter-spacing:.13em;color:var(--accent);margin-bottom:10px}
+.card p{font-size:15.5px;margin-top:10px}
+.phase{border-top:4px solid var(--c)}
+.phase ul,.card ul{margin:14px 0 0;padding-left:18px;font-size:15px}
+.phase li+li,.card li+li{margin-top:5px}
+.tag{display:inline-block;font-size:12px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.cross{margin-top:22px;padding:18px 24px;border:1px dashed #b9c4cd;border-radius:6px;background:#fff;font-size:15px}
+.formula{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:1.15rem;color:var(--ink);background:var(--surface);border-radius:6px;padding:14px 18px;margin-top:14px;overflow-x:auto;white-space:nowrap}
+.tablewrap{overflow-x:auto;margin-top:34px;border:1px solid var(--line);border-radius:6px;background:#fff}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:15px}
+th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:650;background:var(--surface)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+.finding{display:grid;grid-template-columns:1.25fr 1fr;gap:0;border:1px solid var(--line);border-radius:6px;background:#fff;margin-top:22px;overflow:hidden}
+.finding .main{padding:28px}
+.finding .side{padding:28px;background:var(--surface);border-left:1px solid var(--line);font-size:15px}
+.finding .side h4{margin:0 0 8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.finding h3{font-family:Georgia,serif;font-weight:400;font-size:1.5rem;letter-spacing:-.02em;line-height:1.25}
+.finding .k{font-size:12px;font-weight:700;letter-spacing:.13em;color:var(--accent);margin-bottom:10px}
+.finding p{font-size:15.5px;margin-top:12px}
+.nums{display:flex;flex-wrap:wrap;gap:26px;margin-top:18px}
+.nums div{flex:1 1 200px}.nums div b{display:block;font-family:Georgia,serif;font-weight:400;font-size:1.7rem;color:var(--ink);line-height:1.15}
+.nums div span{font-size:13px;color:var(--muted)}
+details{margin-top:30px;border:1px solid var(--line);border-radius:6px;background:#fff}
+summary{cursor:pointer;padding:18px 24px;font-weight:600;color:var(--ink)}
+details ol{margin:0;padding:0 28px 22px 48px;font-size:15.5px}
+details li+li{margin-top:8px}
+pre{margin:18px 0 0;padding:18px;background:var(--ink);color:#e9eef2;border-radius:6px;font-size:13px;line-height:1.55;overflow-x:auto}
+footer{border-top:1px solid var(--line);padding:36px 0 56px;font-size:14px;color:var(--muted)}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+@media(max-width:900px){.grid3,.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stats div:nth-child(2){border-right:0}.stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}.finding{grid-template-columns:1fr}.finding .side{border-left:0;border-top:1px solid var(--line)}nav a.hide{display:none}.wrap{width:calc(100% - 40px)}section.sec{padding:56px 0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap bar">
+  <a class="brand" href="#top">Descriptions <b>→</b> Decisions</a>
+  <nav aria-label="Sections">
+    <a href="#perspective">Perspective</a>
+    <a href="#lifecycle">Lifecycle</a>
+    <a class="hide" href="#formal">Formal view</a>
+    <a href="#evidence">Evidence</a>
+    <a class="hide" href="#open">Open problems</a>
+    <a class="paper" href="assets/or-agents-survey-draft.pdf">Draft PDF ↗</a>
+  </nav>
+</div></header>
+
+<main id="main">
+<div class="wrap hero" id="top">
+  <div class="eyebrow"><span class="rule"></span>A scoping review <span style="color:#abb4bb">/</span> Carnegie Mellon University</div>
+  <h1>From Problem Descriptions to Decisions</h1>
+  <p class="sub">LLM Agents for Optimization Modeling</p>
+  <p class="lede">Language models now write optimization models from plain-language requests. When the answer matches a benchmark, what has actually been shown: that the request was complete, that the model is faithful to it, or only that the solver ran?</p>
+  <p class="authors">Yidi Miao <span>· Heinz College, Carnegie Mellon University</span></p>
+  <div class="cta">
+    <a class="btn primary" href="assets/or-agents-survey-draft.pdf">Read the working draft</a>
+    <a class="btn" href="/leaderboard/">Companion results board</a>
+    <span class="date">Draft of 21 September 2026 · literature to 10 September 2026</span>
+  </div>
+  <p class="status"><strong>Status: working draft, not peer reviewed.</strong> Screening and data charting were AI-assisted following a written PRISMA-ScR protocol. The author's verification of inclusions, sampled exclusions, and charted numbers is still in progress, and numbers are as reported by the cited authors.</p>
+
+  <figure class="flow" aria-label="Lifecycle of an optimization-modeling agent">
+    <svg viewBox="0 0 1100 250" role="img" aria-labelledby="flowt">
+      <title id="flowt">Three activities between a description and a decision, each with its own correctness question</title>
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#667685"/></marker></defs>
+      <g font-family="Inter,Segoe UI,Arial,sans-serif">
+        <text x="0" y="78" font-size="13" fill="#667685">description</text><text x="0" y="96" font-size="13" fill="#667685">and data</text>
+        <line x1="78" y1="84" x2="118" y2="84" stroke="#667685" stroke-width="1.6" marker-end="url(#ar)"/>
+        <rect x="122" y="34" width="250" height="100" rx="6" fill="#eef6f1" stroke="#2f7d4f"/>
+        <text x="142" y="64" font-size="12" font-weight="700" fill="#2f7d4f" letter-spacing="1.5">I · INFORMATION</text>
+        <text x="142" y="90" font-size="15" fill="#173042">extract, ask, ground in data</text>
+        <text x="142" y="114" font-size="13" fill="#667685">Is the specification sufficient?</text>
+        <line x1="374" y1="84" x2="424" y2="84" stroke="#667685" stroke-width="1.6" marker-end="url(#ar)"/>
+        <rect x="428" y="34" width="250" height="100" rx="6" fill="#eef3fa" stroke="#2a63a8"/>
+        <text x="448" y="64" font-size="12" font-weight="700" fill="#2a63a8" letter-spacing="1.5">II · FORMULATION</text>
+        <text x="448" y="90" font-size="15" fill="#173042">generate, then check</text>
+        <text x="448" y="114" font-size="13" fill="#667685">Is the model faithful to it?</text>
+        <line x1="680" y1="84" x2="730" y2="84" stroke="#667685" stroke-width="1.6" marker-end="url(#ar)"/>
+        <rect x="734" y="34" width="250" height="100" rx="6" fill="#fbf3e8" stroke="#b86a12"/>
+        <text x="754" y="64" font-size="12" font-weight="700" fill="#b86a12" letter-spacing="1.5">III · SOLVING</text>
+        <text x="754" y="90" font-size="15" fill="#173042">run, repair, revise, explain</text>
+        <text x="754" y="114" font-size="13" fill="#667685">Was it solved correctly?</text>
+        <line x1="986" y1="84" x2="1026" y2="84" stroke="#667685" stroke-width="1.6" marker-end="url(#ar)"/>
+        <text x="1034" y="89" font-size="13" fill="#667685">decision</text>
+        <path d="M553 136 C553 190 247 190 247 138" fill="none" stroke="#8b99a5" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#ar)"/>
+        <text x="400" y="200" font-size="12.5" fill="#667685" text-anchor="middle">clarify assumptions</text>
+        <path d="M859 136 C859 190 553 190 553 138" fill="none" stroke="#8b99a5" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#ar)"/>
+        <text x="706" y="200" font-size="12.5" fill="#667685" text-anchor="middle">check and revise</text>
+        <text x="553" y="238" font-size="13" fill="#667685" text-anchor="middle">Cross-cutting: training, retrieval, experience and skills · evaluation and benchmarks</text>
+      </g>
+    </svg>
+    <figcaption>Three activities, three questions. Uncertainty about future demand or yields is context for every phase, not a phase of its own.</figcaption>
+  </figure>
+</div>
+
+<section class="sec tint" id="perspective"><div class="wrap">
+  <p class="num">01 / Perspective</p>
+  <h2>One score hides three questions.</h2>
+  <p class="intro">Most systems are judged by whether the optimal value of their model matches a reference answer. That number cannot tell a missing requirement from a wrong constraint or a solver error. The review organizes the literature around the three questions an agent has to answer between a request and a decision.</p>
+  <div class="grid3">
+    <div class="card"><div class="k">01</div><h3>Does the description suffice?</h3><p>“Meet demand at low cost” does not say whether shortages are forbidden or penalized. Both readings are consistent with the text, and they give different plans when capacity is tight.</p></div>
+    <div class="card"><div class="k">02</div><h3>Is the formulation faithful?</h3><p>A model can run, return an optimum, and still omit a requirement. Execution success and objective agreement are incomplete measures of fidelity.</p></div>
+    <div class="card"><div class="k">03</div><h3>Was it solved correctly?</h3><p>Infeasibility may be a coding slip or a question for the user. Repairing until the solver is satisfied can change the problem being solved.</p></div>
+  </div>
+  <div class="stats" aria-label="Review at a glance">
+    <div><b>206</b><span>studies included, of 1,728 records screened</span></div>
+    <div><b>165</b><span>core modeling studies; 41 peripheral applications</span></div>
+    <div><b>71%</b><span>available only as preprints at the search date</span></div>
+    <div><b>13</b><span>findings, grouped into four themes</span></div>
+  </div>
+</div></section>
+
+<section class="sec" id="lifecycle"><div class="wrap">
+  <p class="num">02 / The lifecycle</p>
+  <h2>Where the mechanisms sit.</h2>
+  <p class="intro">Phases are activities, not an exclusive taxonomy: a study can contribute to several. The examples are representative, and the full list of included studies is in the paper's appendix.</p>
+  <div class="grid3">
+    <div class="card phase" style="--c:var(--green)"><span class="tag">Phase I</span><h3>Information handling</h3>
+      <ul><li>Structuring the specification: NL4Opt, LLMOPT, R2C, TriVAL</li><li>Asking: OR-Clarify, SAGE-Agent, Ask–Clarify–Optimize, AutoOR</li><li>Grounding in files and data: OR-Space, ORPilot, LEAN-LLM-OPT, MIPLIB-NL</li></ul></div>
+    <div class="card phase" style="--c:var(--blue)"><span class="tag">Phase II</span><h3>Formulation: generate and check</h3>
+      <ul><li>Representations: IR2Solve, R2C, Text2Zinc, typed DSLs</li><li>Orchestration and search: CoE, OptiMUS, OR-LLM-Agent, OptiTree</li><li>Training: ORLM, OptMATH, SIRL, OR-R1</li><li>Checking: EquivaMap, ModelEquivBench, FLARE, falsification tests, AdmitOR</li></ul></div>
+    <div class="card phase" style="--c:var(--orange)"><span class="tag">Phase III</span><h3>Solving, repair, revision</h3>
+      <ul><li>Debugging loops and IIS-guided repair: ORLoopBench, OptiRepair</li><li>Reformulation for tractability: LinearizeLLM, FormuEvo, EvoCut</li><li>Revision and explanation: model patches, OptiGuide, OptiChat</li></ul></div>
+  </div>
+  <p class="cross"><strong>Cross-cutting.</strong> Knowledge and experience libraries (AlphaOPT, OptSkills, Agora-Opt), benchmarks from word problems to workspaces, and the evaluation practices that decide what a score means.</p>
+</div></section>
+
+<section class="sec tint" id="formal"><div class="wrap">
+  <p class="num">03 / A formal view</p>
+  <h2>Generators, checkers, and what you do with a verdict.</h2>
+  <p class="intro">Most mechanisms combine three ingredients: something that generates artifacts, a checker that tests a stated relation, and a rule for using the checker's verdict. A checker accepts correct artifacts at rate α and incorrect ones at rate β. Simple identities then connect results that look unrelated. They are bookkeeping, not new theory: they say what a study has to report for its result to be interpretable.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Use of a verdict</th><th>What happens</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td>Repair</td><td>Rejected artifacts are revised with the checker's evidence until it accepts</td><td>Debugging loops, IIS-guided repair, LLM validators</td></tr>
+      <tr><td>Selection</td><td>Sample several candidates and return one the checker accepts or ranks highest</td><td>Best-of-N, debate, tree search, confidence selection</td></tr>
+      <tr><td>Admission</td><td>Store a lesson or skill only if the outcome is accepted</td><td>AlphaOPT, OptSkills, AdmitOR</td></tr>
+      <tr><td>Reward</td><td>Train the generator to maximize acceptance, or filter training data by it</td><td>SIRL, OR-R1, OptMATH's rejection sampling</td></tr>
+      <tr><td>Asking</td><td>Query the user while the admissible readings lead to different decisions</td><td>InterOPT, SAGE-Agent, AutoOR</td></tr>
+    </tbody></table></div>
+  <div class="grid2">
+    <div class="card"><div class="k">Repair</div><h3>A loop guarantees only what its checker tests.</h3>
+      <div class="formula">Δ = (1 − p)(1 − β)·γ − p(1 − α)·δ</div>
+      <p>γ is the chance a repair fixes a rejected wrong model, δ the chance it breaks a rejected correct one. With an execution checker the loop stops at “it runs”. With an imperfect LLM validator the second term grows as the generator improves.</p></div>
+    <div class="card"><div class="k">Selection</div><h3>More samples do not sharpen a weak filter.</h3>
+      <div class="formula">Pr(correct | accepted) = pα / (pα + (1 − p)β)</div>
+      <p>The precision of filtering does not depend on the number of samples; k buys coverage. Pass@k is an oracle bound, and voting fails when wrong candidates share a misreading.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="evidence"><div class="wrap">
+  <p class="num">04 / Evidence, with context</p>
+  <h2>What the studies show, and what they do not.</h2>
+  <p class="intro">Backbones, benchmark releases, and tolerances differ across papers, so the review compares mechanisms through within-study ablations and flags cross-paper numbers as illustrations. Five of the thirteen findings:</p>
+
+  <article class="finding"><div class="main"><div class="k">Evaluation reliability</div>
+    <h3>A benchmark name does not identify a benchmark.</h3>
+    <p>Reported NL4Opt test sets range from 213 to 289 instances, IndustryOR from 25 to 100, and success criteria from exact match to a 5% tolerance. Five groups have audited IndustryOR and curated it differently.</p>
+    <div class="nums"><div><b>47 pts</b><span>spread for Chain-of-Experts configurations on IndustryOR across papers</span></div><div><b>≥ 54%</b><span>of IndustryOR instances flagged in one expert audit</span></div></div></div>
+    <div class="side"><h4>What this establishes</h4>Numbers aggregated across papers cannot rank mechanisms. The spread mixes backbones, releases, tolerances, and reproduction choices, and no study decomposes it.</div></article>
+
+  <article class="finding"><div class="main"><div class="k">Agent behavior</div>
+    <h3>Execution repair buys executability more than correctness.</h3>
+    <p>Adding execution validation to 1,318 MiniZinc generations produced 83 more executable models but 14 more correct ones. IIS-guided recovery raised one model's execution rate from 53.2% to 97.4% while strict accuracy moved from 3.7% to 5.8%.</p>
+    <div class="nums"><div><b>0.17</b><span>additional correct models per additional executable one (Text2Model)</span></div><div><b>0.05</b><span>the same ratio for ReLoop's execution recovery</span></div></div></div>
+    <div class="side"><h4>What this establishes</h4>Studies of repair should report how many additional models are correct, not only how many run. Ratios are computed from author-reported counts, mostly single runs.</div></article>
+
+  <article class="finding"><div class="main"><div class="k">Representations</div>
+    <h3>Typed intermediates help; free-form ones can hurt.</h3>
+    <p>Writing a typed scheduling language compiled to CP-SAT raised verified feasibility from 21.7% to 55.3% at a fixed backbone. A free-form four-stage reasoning template helped a frontier model but dropped another model's execution rate from 91.1% to 53.2%.</p></div>
+    <div class="side"><h4>What this establishes</h4>The benefit of an intermediate depends on whether something deterministic implements it. Effects for free-form plans change sign across backbones, so single-backbone results do not transfer.</div></article>
+
+  <article class="finding"><div class="main"><div class="k">Operational difficulty</div>
+    <h3>Accuracy collapses with scale and realism.</h3>
+    <p>On descriptions reverse-constructed from MIPLIB instances, average Pass@1 falls to 17.85% and the execution-failure rate rises to 47.6%. With formulation structure held fixed, growing only the instance data lowered one model from 72% to 11%.</p></div>
+    <div class="side"><h4>What this establishes</h4>High scores on self-contained word problems do not establish readiness for data-heavy or workspace tasks. Systems that scale keep model structure compact and move data out of the prompt.</div></article>
+
+  <article class="finding"><div class="main"><div class="k">Clarification and verification</div>
+    <h3>Asking helps in simulation; the effect of asking is not isolated.</h3>
+    <p>On 100 LP descriptions with facts removed, a model that cannot ask scored 0%, an untrained two-turn protocol 18.5%, and an RL-trained one 66.8%, against 80% with full information. Checkers, meanwhile, certify different relations: one solver-based self-check is right 91.5% of the time when it passes but passes only 34.2% of correct answers.</p></div>
+    <div class="side"><h4>What this establishes</h4>Both outcome-scored clarification studies use LLM-simulated users, and neither tests the policy on complete inputs. No checker's guarantee is unconditional: each depends on a reference, extracted assertions, or a faithful formalization.</div></article>
+
+  <details><summary>All thirteen findings</summary><ol>
+    <li>Benchmark names do not identify benchmarks.</li>
+    <li>Reference labels are noisy, and benchmark curation differs.</li>
+    <li>Typed, machine-checked intermediates help; free-form intermediates can hurt implementation.</li>
+    <li>Structured knowledge often helps, while retrieval and memory can also hurt.</li>
+    <li>Combined supervised and solver-rewarded training helps in reported recipe comparisons.</li>
+    <li>Execution repair buys executability more than correctness; LLM validation can also hurt.</li>
+    <li>Scaffold benefits depend on backbone, task, and computation.</li>
+    <li>Residual errors concentrate in constraints, variable definitions, and data binding.</li>
+    <li>Multiple candidates expose selection headroom and remaining generation failures.</li>
+    <li>Accuracy collapses with scale and realism, and the remedies move data and computation out of the prompt.</li>
+    <li>Reported inference costs vary, and budgets are seldom matched.</li>
+    <li>Two simulated-user comparisons report gains from richer interaction; the effect of asking is not isolated.</li>
+    <li>Checkers disagree on what “equivalent” means and trade coverage for soundness.</li>
+  </ol></details>
+</div></section>
+
+<section class="sec tint" id="open"><div class="wrap">
+  <p class="num">05 / Open problems</p>
+  <h2>What the next systems need.</h2>
+  <div class="grid2">
+    <div class="card"><h3>When is a description sufficient for a decision?</h3><p>A description is decision-sufficient when every admissible reading shares an optimal action. Benchmarks built around that notion could separate unjustified assumptions from formulation errors.</p></div>
+    <div class="card"><h3>Asking the right question, and stopping</h3><p>The value of a question is how much its answer can change the decision. Counting recovered facts weights every hidden fact equally, including the ones that do not matter.</p></div>
+    <div class="card"><h3>Verifying against intent</h3><p>Reference-based checks inherit reference errors, and reference-free checks verify the text rather than what the user meant. Verification can expose that several models fit; only information can choose among them.</p></div>
+    <div class="card"><h3>Learning without answer keys</h3><p>Rewards, data filters, and experience libraries mostly depend on reference values. Admitting every executable model into a library poisons about one entry in four.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="resources"><div class="wrap">
+  <p class="num">06 / Resources</p>
+  <h2>Paper, records, and how to cite.</h2>
+  <div class="grid3">
+    <div class="card"><h3>Working draft</h3><p>85 pages, including the PRISMA-ScR flow, all 206 included studies, detailed evidence tables, and the reporting checklist.</p><p><a href="assets/or-agents-survey-draft.pdf">Open the PDF ↗</a></p></div>
+    <div class="card"><h3>Review records</h3><p>Protocol, search log, screening decisions, charting table, and source-check notes accompany the manuscript and will be released with the preprint.</p></div>
+    <div class="card"><h3>Results board</h3><p>A companion page that re-measures autoformulation methods under one protocol and one scorer.</p><p><a href="/leaderboard/">Open the board ↗</a></p></div>
+  </div>
+  <pre>@misc{miao2026descriptions,
+  title  = {From Problem Descriptions to Decisions: A Scoping Review of
+            LLM Agents for Optimization Modeling},
+  author = {Miao, Yidi},
+  year   = {2026},
+  note   = {Working draft, September 2026},
+  url    = {https://tongqm.github.io/or-agents-survey/}
+}</pre>
+  <p class="cap" style="margin-top:22px">AI tools assisted literature searching, screening, charting, source validation, and drafting; the process is documented in the paper's methods. This research received no funding. Page layout inspired by the survey pages of <a href="https://yubol-bobo.github.io/beyond-nl-survey/">Yubo Li</a>.</p>
+</div></section>
+</main>
+<footer><div class="wrap">© 2026 Yidi Miao · <a href="/">tongqm.github.io</a> · Corrections welcome: ydmiao@cmu.edu</div></footer>
+</body>
+</html>
