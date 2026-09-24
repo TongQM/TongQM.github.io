@@ -31,7 +31,7 @@ nav .paper{background:var(--blue);color:#fff;opacity:1;padding:5px 13px}
 .kicker{display:block;font-size:15px;font-weight:600;color:var(--orange);margin-bottom:14px;letter-spacing:-.01em}.kicker i{display:none}
 .sub{font-size:clamp(1.3rem,2.3vw,1.75rem);font-weight:600;color:var(--muted);margin-top:10px;letter-spacing:-.025em}
 .lede{max-width:600px;margin-top:22px;font-size:1.19rem;line-height:1.42}
-.authors{margin-top:20px;color:var(--ink);font-weight:600}.authors span{color:var(--muted);font-weight:400}
+.authors{margin-top:20px;color:var(--ink);font-weight:600}.ack{max-width:600px;margin-top:8px;font-size:13px;line-height:1.45;color:var(--muted)}.authors span{color:var(--muted);font-weight:400}
 .cta{display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:26px;align-items:center}
 .btn{display:inline-block;padding:11px 22px;border-radius:999px;font-size:17px;color:var(--link)}
 .btn:not(.primary){padding-inline:4px}.btn:not(.primary)::after{content:" ›"}
@@ -86,7 +86,7 @@ a:focus-visible,summary:focus-visible{outline:4px solid rgba(0,113,227,.6);outli
 @media(max-width:900px){.heroin,.split,.finding,.ident,.grid2,.grid3,.q3{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.finding:nth-of-type(even) .text{order:0}.heroart{max-width:400px;margin:0 auto}.lane{grid-template-columns:1fr}.lane .t{border-right:0;border-bottom:1px solid var(--line)}nav a.hide{display:none}section.sec{padding:64px 0}.finding{padding:40px 0}}</style></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap bar"><a class="brand" href="#top"><svg class="logo" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="10" fill="#1d1d1f"/><path d="M8 13h9M8 19h7M8 25h9" stroke="#f5f5f7" stroke-width="2.2" stroke-linecap="round"/><path d="M22 31 L25 15 L35 12 L37 27 Z" fill="none" stroke="#f5f5f7" stroke-width="2" stroke-linejoin="round"/><path d="M27 8 L41 17" stroke="#ff9f0a" stroke-width="1.6" stroke-dasharray="2.5 2.5"/><circle cx="35" cy="12" r="3.2" fill="#ff3b30"/></svg><span>Descriptions to Decisions</span></a>
-<nav aria-label="Sections"><a href="#framework">Framework</a><a href="#questions">Three questions</a><a class="hide" href="#lifecycle">Lifecycle</a><a href="#evidence">Evidence</a><a class="hide" href="#open">Open problems</a><a class="hide" href="#acknowledgments">Acknowledgments</a><a class="paper" href="assets/or-agents-survey-draft.pdf">Draft PDF ↗</a></nav></div></header>
+<nav aria-label="Sections"><a href="#framework">Framework</a><a href="#questions">Three questions</a><a class="hide" href="#lifecycle">Lifecycle</a><a href="#evidence">Evidence</a><a class="hide" href="#open">Open problems</a><a class="paper" href="assets/or-agents-survey-draft.pdf">Draft PDF ↗</a></nav></div></header>
 <main id="main">
 <div class="hero" id="top"><div class="wrap heroin"><div>
 <span class="kicker"><i></i>A scoping review · Carnegie Mellon University</span>
@@ -94,6 +94,7 @@ a:focus-visible,summary:focus-visible{outline:4px solid rgba(0,113,227,.6);outli
 <p class="sub">LLM agents for optimization modeling</p>
 <p class="lede">Language models now write optimization models from plain-language requests. When the answer matches a benchmark, what has been shown: that the request was complete, that the model is faithful to it, or only that the solver ran?</p>
 <p class="authors">Yidi Miao <span>· Heinz College, Carnegie Mellon University</span></p>
+<p class="ack">This survey grew out of discussions with Prof. Ramayya Krishnan, Prof. Rema Padman, Prof. Jonathan Caulkins, Prof. Peter Zhang, Prof. Shixiang (Woody) Zhu, Prof. Mariana Escallon Barrios, and fellow PhD students at Heinz College.</p>
 <div class="cta"><a class="btn primary" href="assets/or-agents-survey-draft.pdf">Read the working draft</a><a class="btn" href="#framework">See the framework</a><span class="date">Draft of 21 September 2026 · literature to 10 September 2026</span></div>
 <p class="status"><strong>Working draft, not peer reviewed.</strong> Screening and charting were AI-assisted under a written PRISMA-ScR protocol. The author's verification of these records is pending, and numbers are as reported by the cited authors.</p>
 </div><div><svg class="heroart" viewBox="0 0 420 380" role="img" aria-label="A written request becomes a feasible region with an optimal point">
@@ -249,11 +250,6 @@ a:focus-visible,summary:focus-visible{outline:4px solid rgba(0,113,227,.6);outli
   url    = {https://tongqm.github.io/or-agents-survey/}
 }</pre>
 <p class="cap" style="margin-top:22px">AI tools assisted literature searching, screening, charting, source validation, and drafting; the process is documented in the paper's methods. This research received no funding.</p>
-</div></section>
-
-<section class="sec" id="acknowledgments" data-tint><div class="wrap">
-<div class="head"><p class="label">Acknowledgments</p><h2>Where this survey came from.</h2></div>
-<p class="intro">This review grew out of discussions within our research group at Heinz College, Carnegie Mellon University. I thank Prof. Ramayya Krishnan, Prof. Rema Padman, Prof. Jonathan Caulkins, Prof. Peter Zhang, Prof. Shixiang (Woody) Zhu, and Prof. Mariana Escallon Barrios, and the fellow PhD students at Heinz whose questions about what an optimization agent can and cannot be trusted with motivated the framing here. Remaining errors are mine.</p>
 </div></section></main>
 <footer><div class="wrap">© 2026 Yidi Miao · <a href="/">tongqm.github.io</a> · Corrections welcome: ydmiao@cmu.edu</div></footer>
 </body></html>
